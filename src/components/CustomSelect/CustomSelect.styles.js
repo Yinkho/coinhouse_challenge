@@ -86,7 +86,7 @@ export const CustomSelectContainer = styled.div`
       transition: all 0.2s ease;
 
       &:hover {
-        background-color: #6ac6ef;
+        background-color: ${({ bgColor }) => `${bgColor}`};
         color: #ffffff;
         font-weight: 700;
         transition: all 0.2s ease;

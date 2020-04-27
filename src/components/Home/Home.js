@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Graph from "../Graph/Graph";
 import btcData from "../../data/btc.json";
 import ethData from "../../data/eth.json";
@@ -88,11 +88,13 @@ const Home = () => {
           optionsList={optionsList}
           selectedOption={selectedCurrency1}
           setSelectedOption={setSelectedCurrency1}
+          bgColor="#da81ff"
         />
         <CustomSelect
           optionsList={optionsList}
           selectedOption={selectedCurrency2}
           setSelectedOption={setSelectedCurrency2}
+          bgColor="#6ac6ef"
         />
       </SelectContainer>
     </div>

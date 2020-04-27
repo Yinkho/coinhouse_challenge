@@ -2,7 +2,12 @@ import React, { useState, useRef } from "react";
 import { CustomSelectContainer } from "./CustomSelect.styles";
 import arrow from "../../assets/arrow.png";
 
-const CustomSelect = ({ optionsList, selectedOption, setSelectedOption }) => {
+const CustomSelect = ({
+  optionsList,
+  selectedOption,
+  setSelectedOption,
+  bgColor,
+}) => {
   const [isActive, setIsActive] = useState(false);
   const [animate, setAnimate] = useState(false);
 
@@ -39,6 +44,7 @@ const CustomSelect = ({ optionsList, selectedOption, setSelectedOption }) => {
       }}
       isActive={isActive}
       animate={animate}
+      bgColor={bgColor}
     >
       <div
         id="select"
