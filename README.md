@@ -1,5 +1,6 @@
-#Coinhouse Challenge
-##(Junior FEWD Challenge - CrytpoChart)
+# Coinhouse Challenge
+
+## (Junior FEWD Challenge - CrytpoChart)
 
 Goal:
 
