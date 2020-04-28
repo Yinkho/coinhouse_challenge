@@ -67,7 +67,6 @@ const Home: React.FC = () => {
           setSelectedOption={setSelectedCurrency1}
           bgColor="#da81ff"
         />
-        {console.log(selectedCurrency2)}
         <CustomSelect
           optionsList={optionsList}
           selectedOption={selectedCurrency2}
