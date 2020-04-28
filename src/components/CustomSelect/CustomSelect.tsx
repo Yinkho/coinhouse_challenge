@@ -1,17 +1,31 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { CustomSelectContainer } from "./CustomSelect.styles";
 import arrow from "../../assets/arrow.png";
 
-const CustomSelect = ({
+interface Props {
+  optionsList: {
+    name: string;
+    data: { price: number; date: number; ratio: number; score: number }[];
+  }[];
+  selectedOption: {
+    data: { price: number; date: number; ratio: number; score: number }[];
+    name: string;
+  };
+  setSelectedOption: (option: {
+    data: { price: number; date: number; ratio: number; score: number }[];
+    name: string;
+  }) => void;
+  bgColor: string;
+}
+
+const CustomSelect: React.FC<Props> = ({
   optionsList,
   selectedOption,
   setSelectedOption,
   bgColor,
 }) => {
-  const [isActive, setIsActive] = useState(false);
-  const [animate, setAnimate] = useState(false);
-
-  const wrapperRef = useRef(null);
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [animate, setAnimate] = useState<boolean>(false);
 
   const renderOptions = () => {
     return optionsList.map((option, key) => (
@@ -29,29 +43,18 @@ const CustomSelect = ({
     ));
   };
 
-  const handleClickOutside = (event) => {
-    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-      setIsActive(false);
-      setAnimate(!animate);
-    }
-  };
-
   return (
     <CustomSelectContainer
-      ref={wrapperRef}
-      onClick={(event) => {
-        handleClickOutside(event);
-      }}
       isActive={isActive}
       animate={animate}
       bgColor={bgColor}
+      data-test="custom-select-container"
     >
       <div
         id="select"
-        onClick={(event) => {
+        onClick={() => {
           setAnimate(!animate);
           setIsActive(!isActive);
-          handleClickOutside(event);
         }}
       >
         <p>{selectedOption.name}</p>

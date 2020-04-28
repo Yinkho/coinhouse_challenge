@@ -25,4 +25,8 @@ export const SelectContainer = styled.div`
       background-color: black;
     }
   }
+
+  @media (max-width: 1000px) {
+    flex-direction: column-reverse;
+  }
 `;

@@ -12,20 +12,34 @@ import {
 } from "recharts";
 import { GraphContainer } from "./Graph.styles";
 
-const Graph = ({ data1, name1, data2, name2 }) => {
-  const scoreAverage1 =
+interface Props {
+  data1: { price: number; date: number; ratio: number; score: number }[];
+  name1: string;
+  data2: { price: number; date: number; ratio: number; score: number }[];
+  name2: string;
+}
+
+const Graph: React.FC<Props> = ({ data1, name1, data2, name2 }) => {
+  // calculte the score average of each selected currency
+  const scoreAverage1: number =
     data1.map((data) => data.score).reduce((a, score) => a + score) /
     data1.length;
-  const scoreAverage2 =
+  const scoreAverage2: number =
     data2.map((data) => data.score).reduce((a, score) => a + score) /
     data2.length;
+
+  // responsive dimensions for the chart
+  const chartWidth: number =
+    window.innerWidth > 1000 ? 800 : window.innerWidth * 0.95;
+  const chartHeight: number =
+    window.innerWidth > 1000 ? 600 : window.innerWidth / 1.4;
 
   return (
     <GraphContainer>
       <h1>Compare currencies</h1>
       <ScatterChart
-        width={700}
-        height={500}
+        width={chartWidth}
+        height={chartHeight}
         margin={{
           top: 20,
           right: 20,

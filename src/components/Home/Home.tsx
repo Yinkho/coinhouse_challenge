@@ -7,7 +7,15 @@ import xrpData from "../../data/xrp.json";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import { SelectContainer } from "./Home.styles";
 
-const currencies = [
+interface SelectedCurrency {
+  name: string;
+  data: { price: number; date: number; ratio: number; score: number }[];
+}
+
+const currencies: {
+  name: string;
+  data: { price: number; date: number; ratio: number; score: number }[];
+}[] = [
   {
     name: "Bitcoin",
     data: btcData,
@@ -26,53 +34,22 @@ const currencies = [
   },
 ];
 
-const Home = () => {
-  const [selectedCurrency1, setSelectedCurrency1] = useState({
+const Home: React.FC = () => {
+  const [selectedCurrency1, setSelectedCurrency1] = useState<SelectedCurrency>({
     ...currencies[0],
   });
-  const [selectedCurrency2, setSelectedCurrency2] = useState({
+  const [selectedCurrency2, setSelectedCurrency2] = useState<SelectedCurrency>({
     ...currencies[1],
   });
 
-  const optionsList = currencies.filter(
+  // display the currencies' name on options of the select
+  const optionsList: {
+    name: string;
+    data: { price: number; date: number; ratio: number; score: number }[];
+  }[] = currencies.filter(
     (currency) =>
       currency.name !== selectedCurrency1.name &&
       currency.name !== selectedCurrency2.name
-  );
-
-  const renderSelects = () => (
-    <SelectContainer>
-      <select
-        onChange={(e) => {
-          setSelectedCurrency1(
-            currencies.find((currency) => currency.name === e.target.value)
-          );
-        }}
-      >
-        {currencies
-          .filter((currency) => currency.name !== selectedCurrency2.name)
-          .map((currency, index) => (
-            <option key={index} value={currency.name}>
-              {currency.name}
-            </option>
-          ))}
-      </select>
-      <select
-        onChange={(e) => {
-          setSelectedCurrency2(
-            currencies.find((currency) => currency.name === e.target.value)
-          );
-        }}
-      >
-        {currencies
-          .filter((currency) => currency.name !== selectedCurrency1.name)
-          .map((currency, index) => (
-            <option key={index} value={currency.name}>
-              {currency.name}
-            </option>
-          ))}
-      </select>
-    </SelectContainer>
   );
 
   return (
@@ -90,6 +67,7 @@ const Home = () => {
           setSelectedOption={setSelectedCurrency1}
           bgColor="#da81ff"
         />
+        {console.log(selectedCurrency2)}
         <CustomSelect
           optionsList={optionsList}
           selectedOption={selectedCurrency2}

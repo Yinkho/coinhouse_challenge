@@ -10,6 +10,18 @@ export const CustomSelectContainer = styled.div`
   flex-wrap: wrap;
   width: 250px;
   margin: 10px 15px 10px 15px;
+  animation: select-appear 0.3s ease;
+
+  @keyframes select-appear {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   #select {
     position: relative;
@@ -93,6 +105,10 @@ export const CustomSelectContainer = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  @media (max-width: 620px) {
+    margin: 5px 0;
   }
 
   @media (max-width: 620px) {
