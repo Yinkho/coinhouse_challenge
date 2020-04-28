@@ -36,7 +36,7 @@ const Graph: React.FC<Props> = ({ data1, name1, data2, name2 }) => {
 
   return (
     <GraphContainer>
-      <h1>Compare currencies</h1>
+      <h1>Compare Cryptocurrencies</h1>
       <ScatterChart
         width={chartWidth}
         height={chartHeight}
